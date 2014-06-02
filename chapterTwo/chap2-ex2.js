@@ -1,3 +1,5 @@
+// Store a set of words in an array and display the contents both forward and backward.
+
 function printForward () {
   function concat (finalString, string) {
     return finalString + string;
