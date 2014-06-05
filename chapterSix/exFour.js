@@ -1,6 +1,5 @@
-// Implement the advance(n) function so that when executed, the current node is
-// moved n nodes forward in the list.
-
+// Write a program that uses a singly linked list to keep track of a set of test grades
+// entered interactively into the program.
 function Node(element) {
   this.element = element;
   this.next = null;
@@ -58,9 +57,12 @@ function advance(n, item) {
   }
   console.log(currNode.element);
 }
-var cities = new LList();
-cities.insert("Conway", "head");
-cities.insert("Russellville", "Conway");
-cities.insert("Carlisle", "Russellville");
-cities.insert("Alma", "Carlisle");
-cities.advance(2, "Conway");
+var grades = new LList();
+grades.insert("Test 1: 86", "head");
+grades.insert("Test 2: 87", "Test 1: 86");
+grades.insert("Test 3: 100", "Test 2: 87");
+grades.insert("Test 4: 99", "Test 3: 100");
+console.log("These are all our tests and grades so far:\n")
+grades.display();
+console.log("\nShow Me Our Third Test:\n")
+grades.advance(2, "Test 1: 86");

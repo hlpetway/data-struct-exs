@@ -1,5 +1,4 @@
-// Implement the back(n) function so that when executed, the current node is moved
-// n spaces backward in the list.
+// Rewrite your solution to Ex 6-4 using a doubly linked list.
 
 function Node(element) {
   this.element = element;
@@ -13,17 +12,7 @@ function LList() {
   this.display = display;
   this.remove = remove;
   this.findLast = findLast;
-  this.advance = advance;
-  this.back = back;
   this.dispReverse = dispReverse;
-}
-function dispReverse() {
-  var currNode = this.head;
-  currNode = this.findLast();
-  while (!(currNode.previous == null)) {
-    console.log(currNode.element);
-    currNode = currNode.previous;
-  }
 }
 function findLast() {
   var currNode = this.head;
@@ -44,7 +33,7 @@ function remove(item) {
 function display() {
   var currNode = this.head;
   while (!(currNode.next == null)) {
-    console.log(currNode.next.element);
+    print(currNode.next.element);
     currNode = currNode.next;
   }
 }
@@ -72,26 +61,12 @@ function advance(n, item) {
   }
   console.log(currNode.element);
 }
-function back(n, item) {
-  var currNode = this.head;
-  while (currNode.element != item) {
-    currNode = currNode.next;
-  }
-  for(var i = 0; i < n; i++) {
-    currNode = currNode.previous;
-  }
-  console.log(currNode.element);
-}
-
-var cities = new LList();
-cities.insert("Conway", "head");
-cities.insert("Russellville", "Conway");
-cities.insert("Carlisle", "Russellville");
-cities.insert("Alma", "Carlisle");
-cities.insert("Seattle", "Alma");
-cities.insert("Portland", "Seattle");
-
-console.log("Here are all our nodes:\n");
-cities.display();
-console.log("\nHere we move back 2 nodes from Seattle:\n");
-cities.back(2, "Seattle");
+var grades = new LList();
+grades.insert("Test 1: 86", "head");
+grades.insert("Test 2: 87", "Test 1: 86");
+grades.insert("Test 3: 100", "Test 2: 87");
+grades.insert("Test 4: 99", "Test 3: 100");
+console.log("These are all our tests and grades so far:\n")
+grades.display();
+console.log("\nShow Me Our Third Test:\n")
+grades.advance(2, "Test 1: 86");

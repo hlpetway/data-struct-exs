@@ -1,5 +1,8 @@
-// Implement the advance(n) function so that when executed, the current node is
-// moved n nodes forward in the list.
+// Write a program that allows you to place n
+// people in a circle and specify that every mth person will be removed. The program
+// should determine the number of the last two people left in the circle. Use a circularly
+// linked list to solve the problem.
+'use strict';
 
 function Node(element) {
   this.element = element;
@@ -7,30 +10,33 @@ function Node(element) {
 }
 function LList() {
   this.head = new Node("head");
+  this.head.next = this.head;
   this.find = find;
   this.insert = insert;
   this.display = display;
-  this.findPrevious = findPrevious;
+  this.findThird = findThird;
   this.remove = remove;
   this.advance = advance;
 }
-function remove(item) {
-  var prevNode = this.findPrevious(item);
+function remove() {
+  var prevNode = this.findThird();
   if (!(prevNode.next == null)) {
     prevNode.next = prevNode.next.next;
   }
 }
-function findPrevious(item) {
+function findThird() {
   var currNode = this.head;
-  while (!(currNode.next == null) &&
-    (currNode.next.element != item)) {
+  for(var i = 0; i < 3; i++){
+  while (!(currNode.next == null)){
     currNode = currNode.next;
+}
 }
 return currNode;
 }
 function display() {
   var currNode = this.head;
-  while (!(currNode.next == null)) {
+  while (!(currNode.next == null) &&
+         !(currNode.next.element == 'head')) {
     console.log(currNode.next.element);
     currNode = currNode.next;
   }
@@ -58,9 +64,11 @@ function advance(n, item) {
   }
   console.log(currNode.element);
 }
-var cities = new LList();
-cities.insert("Conway", "head");
-cities.insert("Russellville", "Conway");
-cities.insert("Carlisle", "Russellville");
-cities.insert("Alma", "Carlisle");
-cities.advance(2, "Conway");
+var people = new LList();
+people.insert("Bob", "head");
+people.insert("Patrick", "Bob");
+people.insert("Carlisle", "Parick");
+people.insert("Russel", "Carlisle");
+people.display();
+// people.remove();
+// people.display();
